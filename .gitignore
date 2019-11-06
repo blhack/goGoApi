@@ -1,0 +1,11 @@
+uploads/
+static/upload.html
+.DS_Store
+server.csr
+server.crt
+server.key
+logfile.log
+flexIms
+config.go
+logfile.log
+goGoApi
