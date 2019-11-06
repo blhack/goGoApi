@@ -1,4 +1,4 @@
-# Flex IMS -- The flexible Inventory Mangement System.
+# GoGoApi
 
 ## API Conventions:	
 ### Binary requests will return JSON strings which adhere to the following convention:
