@@ -5,17 +5,18 @@ import (
 	"fmt"
 	"github.com/blhack/goGoApi/things"
 	"github.com/blhack/goGoApi/utils"
+	"github.com/blhack/goGoApi/auth"
 	"net/http"
 )
 
 func GetThings(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Add("Content-Type", "application-json")
-	listId := r.FormValue("listId")
+	userName := auth.WhoAmI(r).Status
 
 	var response []byte
-	if listId != "" {
-		things := things.GetThings(listId)
+	if userName != "" {
+		things := things.GetThings(userName)
 		if len(things) > 0 {
 			response, _ = json.Marshal(things)
 		} else {

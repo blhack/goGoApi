@@ -6,11 +6,11 @@ import (
 	"github.com/blhack/goGoApi/utils"
 )
 
-func GetThings(listId string) []Thing {
+func GetThings(userName string) []Thing {
 
 	var things []Thing
 
-	rows, err := database.DBCon.Query("select * from things where listId = ?", listId)
+	rows, err := database.DBCon.Query("select * from things where username = ?", userName)
 	utils.CheckErr(err)
 	for rows.Next() {
 		var thing Thing
@@ -20,10 +20,9 @@ func GetThings(listId string) []Thing {
 		var text string
 		var _username string
 		var creationDate string
-		var _listId string
 		var uuid string
 		var fileUuid string
-		err = rows.Scan(&id, &title, &url, &text, &_username, &creationDate, &_listId, &uuid, &fileUuid)
+		err = rows.Scan(&id, &title, &url, &text, &_username, &creationDate, &uuid, &fileUuid)
 		utils.CheckErr(err)
 		thing.Id = id
 		thing.Title = title
@@ -31,7 +30,6 @@ func GetThings(listId string) []Thing {
 		thing.Text = text
 		thing.Username = _username
 		thing.CreationDate = creationDate
-		thing.ListId = _listId
 		thing.Uuid = uuid
 		thing.FileUuid = fileUuid
 

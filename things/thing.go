@@ -7,7 +7,6 @@ type Thing struct {
 	Text         string `json:"text"`
 	Username     string `json:"username"`
 	CreationDate string `json:"creationDate"`
-	ListId       string `json:"listId"`
 	Uuid         string `json:"uuid"`
 	FileUuid     string `json:"fileUuid"`
 	FilePath     string `json:"filePath"`
