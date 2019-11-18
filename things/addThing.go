@@ -1,8 +1,8 @@
 package things
 
 import (
-	"github.com/blhack/flexIms-go/database"
-	"github.com/blhack/flexIms-go/utils"
+	"github.com/blhack/goGoApi/database"
+	"github.com/blhack/goGoApi/utils"
 	"time"
 	"fmt"
 )

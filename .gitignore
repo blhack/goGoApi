@@ -5,7 +5,7 @@ server.csr
 server.crt
 server.key
 logfile.log
-flexIms
+goGoApi
 config.go
 logfile.log
 goGoApi

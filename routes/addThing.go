@@ -3,9 +3,9 @@ package routes
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/blhack/flexIms-go/auth"
-	"github.com/blhack/flexIms-go/things"
-	"github.com/blhack/flexIms-go/utils"
+	"github.com/blhack/goGoApi/auth"
+	"github.com/blhack/goGoApi/things"
+	"github.com/blhack/goGoApi/utils"
 	"net/http"
 )
 
