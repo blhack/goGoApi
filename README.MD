@@ -1,5 +1,30 @@
 # GoGoApi
 
+## Installation
+
+##Config
+
+See config/config.go.  Server.crt and Server.key are required and can be obtained either via openssl, letsencrypt, or a commercial vendor.  Indicate the path to these files.
+
+Modify DbUser and DbPass to reflect your local parameters.  By default the API will look for a DB called "goGoApi", but you should create a database with whatever name you want and relect it in this file.
+
+One option for loading the db schema would be: mysql -u $user -p goGoApi < schema.sql
+
+Cookiedomain should also be set if you are working elsewhere than localhost.  Similarly, if you are serving your frontend from a different sub/domain than your api (for instance: www.example.com = frontend and api.example.com = api.), add these frontend domains to the list under "WhitelistOrigins"
+
+Rebuild the binary after modifying this config file.
+
+##Build
+
+     cd goGoApi
+     go get ./...
+     go build -o goGoApi goGoApi.go
+
+#Start
+     ./goGoApi
+
+(Will fail if your user does not have rights to open ports 80 and 443.  You could solve this with sudo ./goGoApi, however running as root as not always/usually not advisable)
+
 ## API Conventions:	
 ### Binary requests will return JSON strings which adhere to the following convention:
 
