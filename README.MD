@@ -2,7 +2,7 @@
 
 ## Installation
 
-##Config
+## Config
 
 See config/config.go.  Server.crt and Server.key are required and can be obtained either via openssl, letsencrypt, or a commercial vendor.  Indicate the path to these files.
 
@@ -14,13 +14,13 @@ Cookiedomain should also be set if you are working elsewhere than localhost.  Si
 
 Rebuild the binary after modifying this config file.
 
-##Build
+## Build
 
      cd goGoApi
      go get ./...
      go build -o goGoApi goGoApi.go
 
-#Start
+# Start
      ./goGoApi
 
 (Will fail if your user does not have rights to open ports 80 and 443.  You could solve this with sudo ./goGoApi, however running as root as not always/usually not advisable)
