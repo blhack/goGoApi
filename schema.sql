@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.17, for osx10.13 (x86_64)
 --
--- Host: localhost    Database: goGoApi
+-- Host: localhost    Database: flexIms
 -- ------------------------------------------------------
 -- Server version	8.0.17
 
@@ -16,6 +16,24 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `attributes`
+--
+
+DROP TABLE IF EXISTS `attributes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `attributes` (
+  `uuid` varchar(36) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `attributeName` varchar(36) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `attributeValue` varchar(140) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `username` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `uuidIndex` (`uuid`),
+  KEY `attributeName` (`attributeName`),
+  KEY `nameValue` (`attributeName`,`attributeValue`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `sessions`
 --
 
@@ -28,7 +46,7 @@ CREATE TABLE `sessions` (
   `sessionId` text,
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +66,7 @@ CREATE TABLE `things` (
   `uuid` varchar(36) DEFAULT NULL,
   `fileUuid` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,4 +95,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-06  9:57:36
+-- Dump completed on 2019-11-18 11:37:56

@@ -2,8 +2,9 @@ package things
 
 import (
 	"fmt"
-	"github.com/blhack/goGoApi/database"
-	"github.com/blhack/goGoApi/utils"
+	"github.com/blhack/flexIms-go/database"
+	"github.com/blhack/flexIms-go/utils"
+	"database/sql"
 )
 
 func GetThings(userName string) []Thing {
@@ -16,8 +17,8 @@ func GetThings(userName string) []Thing {
 		var thing Thing
 		var id int
 		var title string
-		var url string
-		var text string
+		var url sql.NullString
+		var text sql.NullString
 		var _username string
 		var creationDate string
 		var uuid string
@@ -26,8 +27,8 @@ func GetThings(userName string) []Thing {
 		utils.CheckErr(err)
 		thing.Id = id
 		thing.Title = title
-		thing.Url = url
-		thing.Text = text
+		thing.Url = url.String
+		thing.Text = text.String
 		thing.Username = _username
 		thing.CreationDate = creationDate
 		thing.Uuid = uuid
@@ -37,6 +38,21 @@ func GetThings(userName string) []Thing {
 			thing.FilePath = fmt.Sprintf("/uploads/photos/%s.jpg", fileUuid)
 		} else {
 			thing.FilePath = ""
+		}
+		fmt.Println("UUID")
+		fmt.Println(uuid)
+		attrs, err := database.DBCon.Query("select attributeName,attributeValue from attributes where uuid = ?", uuid)
+		utils.CheckErr(err)
+		for attrs.Next() {
+			var _Attribute Attribute
+			var attributeName sql.NullString
+			var attributeValue sql.NullString
+			err = attrs.Scan(&attributeName,&attributeValue)
+			utils.CheckErr(err)
+			_Attribute.AttributeName = attributeName.String
+			_Attribute.AttributeValue = attributeValue.String
+			fmt.Println(attributeName)
+			thing.Attributes = append(thing.Attributes, _Attribute)
 		}
 
 		things = append(things, thing)
